@@ -12,7 +12,7 @@ function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await axios.get("http://127.0.0.1:8000/api/notes");
+      const res = await axios.get("https://notezy-backend-mvrs.onrender.com/api/notes");
       const note = res.data
       
       setNotes(note);
@@ -25,11 +25,11 @@ function Home() {
 
 const handlePinToggle = async (noteId, currentPinned) => {
   try {
-    await axios.patch(`http://127.0.0.1:8000/api/notes/edit/${noteId}`, {
+    await axios.patch(`https://notezy-backend-mvrs.onrender.com/api/notes/edit/${noteId}`, {
       pinned: !currentPinned,   // toggle true/false
     });
     // fetch updated notes again
-    const res = await axios.get("http://127.0.0.1:8000/api/notes");
+    const res = await axios.get("https://notezy-backend-mvrs.onrender.com/api/notes");
     setNotes(res.data);
   } catch (error) {
     console.error(error);

@@ -24,11 +24,11 @@ function AddNotes({ prop }) {
     e.preventDefault();
     if (id) {
       //Update Request -------------------------------------------------
-      await axios.patch(`http://127.0.0.1:8000/api/notes/edit/${id}`, form);
+      await axios.patch(`https://notezy-backend-mvrs.onrender.com/api/notes/edit/${id}`, form);
       navigate("/");
     } else {
       //Create Request --------------------------------------------------------
-      const res = await axios.post("http://127.0.0.1:8000/api/notes/add", form);
+      const res = await axios.post("https://notezy-backend-mvrs.onrender.com/api/notes/add", form);
       const msg = () => {
         setResp(res.data.msg);
         navigate("/");
@@ -45,7 +45,7 @@ function AddNotes({ prop }) {
     async function fetchData() {
       if (id) {
         const res = await axios.get(
-          `http://127.0.0.1:8000/api/notes/edit/${id}`
+          `https://notezy-backend-mvrs.onrender.com/api/notes/edit/${id}`
         );
         setForm({
           title: res.data.title,
@@ -62,7 +62,7 @@ function AddNotes({ prop }) {
     const handleDelete = async (e) =>{
       e.preventDefault();
       alert("Are you sure?? Delete this note")
-    const res = await axios.delete(`http://127.0.0.1:8000/api/notes/delete/${id}`)
+    const res = await axios.delete(`https://notezy-backend-mvrs.onrender.com/api/notes/delete/${id}`)
     const msg = () => {
         setResp(res.data.msg);
         navigate("/");
